@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stronger Together</title>
+    <style>
+    </style>
+  </head>
+  <body>
+    <p>Rock Paper Scissors</p>
+    <button onclick = "
+    playGame('Rock');
+    ">Rock</button>
+
+    <button onclick = "
+    playGame('Paper');
+    ">Paper</button>
+
+    <button onclick = "
+    playGame('Scissors');
+    ">Scissors</button>
+
+    <button onclick = " 
+    score.wins = 0;
+    score.losses = 0;
+    score.ties = 0;
+    localStorage.removeItem('score');
+    ">Reset Score</button>
+    <script>
+      let score = JSON.parse(localStorage.getItem('score')) || {
+      wins: 0,
+      losses: 0,
+      ties: 0
+      };
+
+      function pickComputerMove() {
+        let compPlay = ' ';
+        randomNumber = Math.random();
+        if(randomNumber < .33){
+          compPlay = 'Rock';
+        } else if(randomNumber > .33 && randomNumber < .66) {
+          compPlay = 'Paper';
+        } else if (randomNumber > .66) {
+          compPlay = 'Scissors';
+        } 
+        return compPlay;
+      }
+
+      function playGame(userPlay){
+        let result = ' ';
+        compPlay = pickComputerMove();
+
+        if(userPlay === 'Scissors'){
+          if(compPlay === 'Rock'){
+            result = 'you lose';
+          } else if (compPlay === 'Paper') {
+            result = 'you win';
+          } else {
+            result = 'tie';
+          }
+
+        } else if(userPlay === 'Paper'){
+          if(compPlay === 'Rock'){
+            result = 'you win';
+          } else if (compPlay === 'Paper') {
+            result = 'tie';
+          } else {
+            result = 'you lose';
+          }
+
+        } else if (userPlay === 'Rock'){
+          if(compPlay === 'Rock'){
+            result = 'tie';
+          } else if (compPlay === 'Paper') {
+            result = 'you lose';
+          } else {
+            result = 'you win';
+          }
+        }
+        if(result === 'you win'){
+          score.wins++;
+        } else if (result === 'you lose'){
+          score.losses++;
+        } else{
+          score.ties++;
+        }
+
+        localStorage.setItem('score', JSON.stringify(score));
+        
+        alert(`You chose ${userPlay}, computer chose ${compPlay}, ${result}
+Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`);
+        
+      }
+    </script>
+  </body>
+</html>
