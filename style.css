@@ -10,8 +10,8 @@ body {
 }
 
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #dac4d0;
+    color: #8f5774;
     padding: 20px;
     text-align: center;
 }
@@ -42,7 +42,7 @@ input, select {
 }
 
 input:focus, select:focus {
-    border-color: #4CAF50;
+    border-color: #dac4d0;
     outline: none;
 }
 
@@ -60,7 +60,7 @@ select {
 
 /* Button styling */
 button {
-    background-color: #4CAF50;
+    background-color: #036264;
     color: white;
     padding: 14px 24px;
     margin: 5px;
@@ -72,7 +72,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #11302a;
     transform: scale(1.05);
 }
 
@@ -112,7 +112,7 @@ button:disabled {
 .progressBar {
     height: 20px;
     width: 0%;
-    background-color: #4caf50;
+    background-color: #036264;
     text-align: center;
     line-height: 20px;
     color: white;
