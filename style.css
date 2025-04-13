@@ -1,0 +1,120 @@
+/* style.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main content */
+main {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Input fields */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input:focus, select:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+input[type="date"], input[type="email"], input[type="password"] {
+    box-sizing: border-box;
+}
+input[type="text"], input[type="email"], input[type="password"] {
+    box-sizing: border-box;
+}
+select {
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* Button styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 24px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+/* Form label */
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    main {
+        width: 90%;
+        margin-top: 30px;
+    }
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.progressContainer {
+    width: 100%;
+    background-color: #ccc;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+.progressBar {
+    height: 20px;
+    width: 0%;
+    background-color: #4caf50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+    border-radius: 10px;
+}
