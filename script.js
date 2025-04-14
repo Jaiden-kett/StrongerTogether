@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function(){
     navagation("signUpButton", "signup.html");
     navagation("toLogAnUrgeButton", "loganurge.html");
     navagation("returnToHomeButton", "home.html");
-    navagation("viewAllUrgesButton", "allurges.html")
+    navagation("viewAllUrgesButton", "allurges.html");
     const clearLocalSessionButton = document.getElementById("clearLocalStorage");
     if (clearLocalSessionButton) {
         clearLocalSessionButton.addEventListener("click", function () {
