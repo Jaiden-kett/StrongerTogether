@@ -271,7 +271,6 @@ function fillConfirmFields(){
         lastName: "confirmLastName",
         username: "confirmUsername",
         password: "confirmPassword",
-        email: "confirmEmail",
         addiction: "confirmAddiction",
         purpose: "confirmPurpose",
         startTime: "confirmStartDate"
@@ -339,7 +338,6 @@ function getInputValues() {
             username: getTrimmedValue("usernameInput"),
             password: getTrimmedValue("passwordInput"),
             repeatPassword: getTrimmedValue("repeatPasswordInput"),
-            email: getTrimmedValue("emailInput"),
             addiction: getTrimmedValue("addictionInput"),
             purpose: getTrimmedValue("purposeInput"),
             startTime: new Date(),
@@ -353,7 +351,6 @@ function getInputValues() {
             username: getTrimmedValue("usernameInput"),
             password: getTrimmedValue("passwordInput"),
             repeatPassword: getTrimmedValue("repeatPasswordInput"),
-            email: getTrimmedValue("emailInput"),
             addiction: getTrimmedValue("addictionInput"),
             purpose: getTrimmedValue("purposeInput"),
             startTime: new Date(document.getElementById("startTimeInput").value),
