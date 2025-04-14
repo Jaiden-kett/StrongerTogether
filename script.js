@@ -279,7 +279,7 @@ function fillConfirmFields(){
 
         if (element) {
             const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
-            element.textContent = `${formattedKey.replace(/([A-Z])/g, " $1").trim()}: ${sessionStorage.getItem(key) || "N/A"}`;
+            element.textContent = `${formattedKey.replace(/([A-Z])/g, " $1").trim().toLocaleString()}: ${sessionStorage.getItem(key) || "N/A"}`;
         }
     }
 }
