@@ -277,7 +277,7 @@ function fillConfirmFields(){
     };
     for (const key in confirmFields) {
         const element = document.getElementById(confirmFields[key]);
-        if (!element) return; // 👈 Prevents error on pages without the element
+        if (!element) return; 
 
         if (element) {
             const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
@@ -412,7 +412,7 @@ function recentUrge() {
     let userIndex = users.findIndex(user => user.username === currentUser);
 
     let recentUrgeElement = document.getElementById("mostRecentUrge");
-    if (!recentUrgeElement) return; // 👈 Prevents error on pages without the element
+    if (!recentUrgeElement) return; 
 
     // Check if the user has logged any urges
     if (userIndex !== -1 && users[userIndex].urges && users[userIndex].urges.length > 0) {
@@ -429,7 +429,7 @@ function recentUrge() {
 }
 function showAllUrges() {
     let allUrges = document.getElementById("allUrges");
-    if (!allUrges) return; // 👈 Prevents error on pages without the element
+    if (!allUrges) return; 
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
