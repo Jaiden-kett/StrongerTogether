@@ -302,7 +302,7 @@ function getInputValues() {
     const startTimeInputTime =  new Date(document.getElementById("startTimeInput").value);
     const difference = now - startTimeInputTime;
     const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
-    if(days < 2){
+    if(days < 1){
         return{
             firstName: getTrimmedValue("firstNameInput"),
             lastName: getTrimmedValue("lastNameInput"),
