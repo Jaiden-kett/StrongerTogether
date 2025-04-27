@@ -60,12 +60,8 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
-    const usernameTextBox = document.getElementById("logInUsername");
-    usernameTextBox.addEventListener("keydown", function(event) {
-        if(event.key === 'Enter'){
-            handleLogIn();
-        }
-    })
+    enterKey(logInUsername);
+    enterKey(logInPassword);
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
@@ -75,6 +71,14 @@ document.addEventListener("DOMContentLoaded", function(){
     reasonForSoberText();
     showAllUrges();
 });
+function enterKey(textBoxId){
+    const textBox = document.getElementById(textBoxId);
+    textBox.addEventListener("keydown", function(event){
+        if(event.key === 'Enter'){
+            handleLogIn();
+        }
+    }
+
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
     if (!disclaimerText) return; 
