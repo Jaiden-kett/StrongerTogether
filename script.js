@@ -1,12 +1,10 @@
 let sobrietyTimerInterval;
 document.addEventListener("DOMContentLoaded", function(){
-    navagation("goBackButton", "signup.html");
-    navagation("logInButton", "login.html");
-    navagation("returnToSignUpButton", "signup.html");
-    navagation("signUpButton", "signup.html");
-    navagation("toLogAnUrgeButton", "loganurge.html");
-    navagation("returnToHomeButton", "home.html");
-    navagation("viewAllUrgesButton", "allurges.html");
+    navagation("toLogIn", "login.html");
+    navagation("toSignUp", "signup.html");
+    navagation("toLogAnUrge", "loganurge.html");
+    navagation("toHomeButton", "home.html");
+    navagation("toAllUrges", "allurges.html");
     const clearLocalSessionButton = document.getElementById("clearLocalStorage");
     if (clearLocalSessionButton) {
         clearLocalSessionButton.addEventListener("click", function () {
@@ -14,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.clear();
         });
     }
-    const logInLogInButton = document.getElementById("logInLogInButton");
+    const logInButton = document.getElementById("logInLogInButton");
     if (logInLogInButton){
         logInLogInButton.addEventListener('click', function(){
             handleLogIn();
