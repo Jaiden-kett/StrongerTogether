@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
-    enterKey(logInUsername);
-    enterKey(logInPassword);
+    enterKey("logInUsername");
+    enterKey("logInPassword");
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
