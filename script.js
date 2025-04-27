@@ -60,8 +60,8 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
-    const logInUsername = document.getElementById("logInUsername");
-    logInUsername.addEventListener("keydown", function(event) {
+    const logInUsernameTextBox = document.getElementById("logInUsernameTextBox");
+    logInUsernameTextBox.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Optional: prevent default behavior if needed
             handleLogIn();
