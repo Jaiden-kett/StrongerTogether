@@ -62,12 +62,14 @@ document.addEventListener("DOMContentLoaded", function(){
     }
     const logInUsernameTextBox = document.getElementById("logInUsernameTextBox");
     logInUsernameTextBox.addEventListener("keydown", function(event) {
+        if (!logInUsernameTextBox) return;
         if (event.key === "Enter") {
             handleLogIn();
         }
     });
     const logInPasswordTextBox = document.getElementById("logInPasswordTextBox");
     logInPasswordTextBox.addEventListener("keydown", function(event) {
+        if (!logInPasswordTextBox) return;
         if (event.key === "Enter") {
             handleLogIn();
         }
