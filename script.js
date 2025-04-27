@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function(){
     const logInUsernameTextBox = document.getElementById("logInUsernameTextBox");
     logInUsernameTextBox.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
-            event.preventDefault(); // Optional: prevent default behavior if needed
             handleLogIn();
         }
     });
@@ -77,13 +76,6 @@ document.addEventListener("DOMContentLoaded", function(){
     reasonForSoberText();
     showAllUrges();
 });
-    const textBox = document.getElementById(textBoxId);
-    textBox.addEventListener("keydown", function(event) {
-        if (event.key === "Enter") {
-            event.preventDefault(); // Optional: prevent default behavior if needed
-            handleLogIn();
-        }
-    });
 
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
