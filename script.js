@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function(){
     navagation("toLogIn", "login.html");
     navagation("toSignUp", "signup.html");
     navagation("toLogAnUrge", "loganurge.html");
-    navagation("toHomeButton", "home.html");
+    navagation("toHome", "home.html");
     navagation("toAllUrges", "allurges.html");
     const clearLocalSessionButton = document.getElementById("clearLocalStorage");
     if (clearLocalSessionButton) {
@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.clear();
         });
     }
-    const logInButton = document.getElementById("logInLogInButton");
-    if (logInLogInButton){
-        logInLogInButton.addEventListener('click', function(){
+    const logInButton = document.getElementById("logInButton");
+    if (logInButton){
+        logInButton.addEventListener('click', function(){
             handleLogIn();
         });
     }
