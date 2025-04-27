@@ -78,7 +78,7 @@ function enterKey(textBoxId){
             handleLogIn();
         }
     }
-
+}
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
     if (!disclaimerText) return; 
