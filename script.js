@@ -71,14 +71,20 @@ document.addEventListener("DOMContentLoaded", function(){
     reasonForSoberText();
     showAllUrges();
 });
-function enterKey(textBoxId){
+function enterKey(textBoxId) {
     const textBox = document.getElementById(textBoxId);
-    textBox.addEventListener("keydown", function(event){
-        if(event.key === 'Enter'){
+    if (!textBox) {
+        console.error(`Element with ID "${textBoxId}" not found.`);
+        return;
+    }
+    textBox.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Optional: prevent default behavior if needed
             handleLogIn();
         }
-    }
+    });
 }
+
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
     if (!disclaimerText) return; 
