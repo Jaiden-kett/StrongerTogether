@@ -60,8 +60,14 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
-    enterKey("logInUsername");
-    enterKey("logInPassword");
+    const logInUsername = document.getElementById("logInUsername");
+    logInUsername.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            event.preventDefault(); // Optional: prevent default behavior if needed
+            handleLogIn();
+        }
+    });
+
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
@@ -71,19 +77,13 @@ document.addEventListener("DOMContentLoaded", function(){
     reasonForSoberText();
     showAllUrges();
 });
-function enterKey(textBoxId) {
     const textBox = document.getElementById(textBoxId);
-    if (!textBox) {
-        console.error(`Element with ID "${textBoxId}" not found.`);
-        return;
-    }
     textBox.addEventListener("keydown", function(event) {
         if (event.key === "Enter") {
             event.preventDefault(); // Optional: prevent default behavior if needed
             handleLogIn();
         }
     });
-}
 
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
