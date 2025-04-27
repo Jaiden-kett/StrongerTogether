@@ -60,6 +60,12 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
+    const usernameTextBox = document.getElementById("logInUsername");
+    usernameTextBox.addEventListener("keydown", function(event) {
+        if(event.key === 'Enter'){
+            handleLogIn();
+        }
+    })
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
