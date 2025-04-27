@@ -12,9 +12,9 @@ document.addEventListener("DOMContentLoaded", function(){
             localStorage.clear();
         });
     }
-    const logInButton = document.getElementById("logInButton");
-    if (logInButton){
-        logInButton.addEventListener('click', function(){
+    const logIn = document.getElementById("logIn");
+    if (logIn){
+        logIn.addEventListener('click', function(){
             handleLogIn();
         });
     }
