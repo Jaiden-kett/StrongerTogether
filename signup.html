@@ -1,67 +1,70 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Sign Up Page</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
+<head>
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-        <header>
-            <h1>Sign up to create an account with Stronger Together</h1>
-        </header>
-    
-        <main>
-    
-            <form id="signupForm">
-                <label for="firstNameInput">First Name *</label>
-                <input id="firstNameInput" type="text" placeholder="Enter First Name" name="firstName" required>
+    <header>
+        <h1>Sign up to create an account with Stronger Together</h1>
+    </header>
 
-                <label for="lastNameInput">Please Enter Your Last Name *</label>
-                <input id="lastNameInput" type="text" placeholder="Enter Last Name" name="lastName" required>
+    <main>
 
-                <label for="usernameInput">Please Enter A Username *</label>
-                <input id="usernameInput" type="text" placeholder="Enter Username" name="username" required>
+        <form id="signupForm">
+            <label for="firstNameInput">First Name *</label>
+            <input id="firstNameInput" type="text" placeholder="Enter First Name" name="firstName" required>
 
-                <label for="passwordInput">Please Enter A Password *</label>
-                <input id="passwordInput" type="password" placeholder="Enter Password" name="password" required minlength="8">
+            <label for="lastNameInput">Please Enter Your Last Name *</label>
+            <input id="lastNameInput" type="text" placeholder="Enter Last Name" name="lastName" required>
+
+            <label for="usernameInput">Please Enter A Username *</label>
+            <input id="usernameInput" type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="passwordInput">Please Enter A Password *</label>
+            <input id="passwordInput" type="password" placeholder="Enter Password" name="password" required minlength="8">
             
-                <label for="repeatPasswordInput">Please Repeat Password *</label>
-                <input id="repeatPasswordInput" type="password" placeholder="Repeat Password" name="password" required>
-    
-                <label for="addictionInput">Please Enter Your Addiction *</label>
-                <select id="addictionInput" name="addiction" required>
-                    <option value="">Select An Addiction</option>
-                    <option value="Alcohol">Alcohol</option>
-                    <option value="Caffeine">Caffeine</option>
-                    <option value="Cannabis">Cannabis</option>
-                    <option value="Diet">Diet</option>
-                    <option value="Eating">Eating</option>
-                    <option value="Gambling">Gambling</option>
-                    <option value="Gaming">Gaming</option>
-                    <option value="Hallucinogens">Hallucinogens</option>
-                    <option value="Inhalants">Inhalants</option>
-                    <option value="Internet">Internet</option>
-                    <option value="Nicotine">Nicotine</option>
-                    <option value="Perscription Drugs">Perscription Drugs</option>
-                    <option value="Pornography">Pornography</option>
-                    <option value="Sex">Sex</option>
-                    <option value="Shoplifting">Shoplifting</option>
-                    <option value="Shopping">Shopping</option>
-                    <option value="Tobacco ">Tobacco</option>
-                </select>
+            <label for="repeatPasswordInput">Please Repeat Password *</label>
+            <input id="repeatPasswordInput" type="password" placeholder="Repeat Password" name="password" required>
 
-                <label for="purposeInput">Why do you want to overcome your addiction? *</label>
-                <input id="purposeInput" type="text" placeholder="Enter your purpose" name="purpose" required>
+            <label for="addictionInput">Please Enter Your Addiction *</label>
+            <select id="addictionInput" name="addiction" required>
+                <option value="">Select An Addiction</option>
+                <option value="Alcohol">Alcohol</option>
+                <option value="Caffeine">Caffeine</option>
+                <option value="Cannabis">Cannabis</option>
+                <option value="Diet">Diet</option>
+                <option value="Eating">Eating</option>
+                <option value="Gambling">Gambling</option>
+                <option value="Gaming">Gaming</option>
+                <option value="Hallucinogens">Hallucinogens</option>
+                <option value="Inhalants">Inhalants</option>
+                <option value="Internet">Internet</option>
+                <option value="Nicotine">Nicotine</option>
+                <option value="Perscription Drugs">Perscription Drugs</option>
+                <option value="Pornography">Pornography</option>
+                <option value="Sex">Sex</option>
+                <option value="Shoplifting">Shoplifting</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Tobacco ">Tobacco</option>
+        </select>
 
-                <label for="startTimeInput">When did you start your sobriety *</label>
-                <input id="startTimeInput" type="date" name="startDate" required>
+            <label for="purposeInput">Why do you want to overcome your addiction *</label>
+            <input id="purposeInput" type="text" placeholder="Enter your purpose" name="purpose" required>
 
-                <p>* Required</p>
+            <label for="startTimeInput">When did you start your sobriety *</label>
+            <input id="startTimeInput" type="date" name="startDate" required>
 
-                <button type="submit" id="toConfirm">Submit</button>
-                <p id = disclaimerText></p>
-            </form>
-        </main>
-        <script src="script.js"></script>
-    </body>
+            <p>* Required</p>
+
+            <button type="submit" id="submitButton">Submit</button>
+            <p id = disclaimerText></p>
+        </form>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
 </html>
