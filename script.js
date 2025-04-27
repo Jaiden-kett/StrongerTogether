@@ -18,9 +18,9 @@ document.addEventListener("DOMContentLoaded", function(){
             handleLogIn();
         });
     }
-    const submitButton = document.getElementById("submitButton");
-    if (submitButton) {  
-        submitButton.addEventListener("click", function(event) {
+    const toConfirm = document.getElementById("toConfirm");
+    if (toConfirm) {  
+        toConfirm.addEventListener("click", function(event) {
             event.preventDefault();
             const username = document.getElementById("usernameInput").value.trim();
             if (!checkUsernameAvailability(username)) {
