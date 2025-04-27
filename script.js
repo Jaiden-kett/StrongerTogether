@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function(){
                 fillConfirmFields();
                 window.location.href = "confirm.html";
                 fillConfirmFields();
-
             }
         });
     }
@@ -70,31 +69,25 @@ document.addEventListener("DOMContentLoaded", function(){
     reasonForSoberText();
     showAllUrges();
 });
-
-
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
-    if (!disclaimerText) return; // 👈 Prevents error on pages without the element
-
+    if (!disclaimerText) return; 
     disclaimerText.textContent = "For immediate support, call the SAMHSA National Helpline at 1-800-662-HELP (4357) or the Suicide & Crisis Lifeline at 988";
 }
 function reasonForSoberText() {
     const user = getCurrentUserInfo();
     const neverForget = document.getElementById("neverForget");
     const reasonForSoberText = document.getElementById("reasonForSoberText");
-
     if(!reasonForSoberText) return;
     neverForget.textContent =`Never forget why you started your journey of sobriety from ${user.addiction.toLowerCase()}`;
     if (!reasonForSoberText) {
         alert("Error: reasonForSoberText element not found!");
         return;
     }
-
     if (!user) {
         alert("Error: No logged-in user found.");
         return;
     }
-
     if (!user.purpose) {
         alert("Error: No purpose found for the user.");
         return;
@@ -102,7 +95,6 @@ function reasonForSoberText() {
     reasonForSoberText.textContent = `"${user.purpose}" -${user.username}`;
 }
 function resetSobrietyTimer() {
-
     if(!confirm("are you sure?")){
         return;
     }
@@ -111,18 +103,15 @@ function resetSobrietyTimer() {
         let users = JSON.parse(localStorage.getItem("users")) || [];
         let currentUser = localStorage.getItem("currentUser");
         let userIndex = users.findIndex(user => user.username === currentUser);
-
         if (userIndex !== -1) {
             users[userIndex].startTime = new Date().toISOString();
             users[userIndex].lessThanOneDay = "true";
-
             localStorage.setItem("users", JSON.stringify(users));
             console.log("New startTime:", users[userIndex].startTime);
         } else {
             alert("User not found!");
             return;
         }
-
         daysSober();
     }
 }
@@ -130,7 +119,6 @@ function daysSober() {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
     let userIndex = users.findIndex(user => user.username === currentUser);
-
     const startTimeTimer = new Date(users[userIndex].startTime);
     const sobrietyTimerText = document.getElementById("sobrietyTimerText");
     const secondsBar = document.getElementById("secondsBar");    
@@ -155,8 +143,6 @@ function daysSober() {
         const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-        
-        //displays appropriet amount of data
         if(minutes == 0){
             sobrietyTimerText.textContent = `You have been sober for ${seconds} seconds. Here's to new beginnings`;
         } else if(hours ==0){
@@ -182,7 +168,6 @@ function daysSober() {
             }
         sobrietyTimerText.textContent = `You have been sober for ${years} years, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
         }
-
         secondsBar.style.width = (seconds / 60) * 100 + "%";
         secondsDisplay.textContent = `Progress to the next minute (${seconds} seconds)`;
 
@@ -194,8 +179,6 @@ function daysSober() {
 
         yearsBar.style.width = (days / 365) * 100 + "%";
         yearsDisplay.textContent = `Progress to the next year (${days} days)`;
-
-        
     }
     clearInterval(sobrietyTimerInterval);
     updateTimer();
@@ -212,18 +195,13 @@ function fillHomeHeadingText(){
 }
 function getCurrentUserInfo() {
     const currentUsername = localStorage.getItem("currentUser");
-
-    if (!currentUsername) return null; // No user is logged in
-
+    if (!currentUsername) return null; 
     const users = JSON.parse(localStorage.getItem("users")) || [];
     return users.find(user => user.username === currentUsername) || null;
 }
 function checkUsernameAvailability(username) {
     let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Check if username already exists
     const userExists = users.some(user => user.username === username);
-
     if (userExists) {
         alert("Username already taken");
         return false;
@@ -241,15 +219,14 @@ function validateForm() {
         "purposeInput",
         "startTimeInput"
     ];
-
     for (const fieldId of requiredFields) {
         const field = document.getElementById(fieldId);
         if (!field || field.value.trim() === "") {
             alert(`Please fill in all fields.`);
-            return false; // Stop form submission
+            return false; 
         }
     }
-    return true; // All fields are filled
+    return true; 
 }
 function repeatPasswordCorrect(){
     password = document.getElementById("passwordInput").value;
@@ -265,7 +242,6 @@ function formatFieldName(fieldId) {
     return fieldId.replace("Input", "").replace(/([A-Z])/g, " $1").trim();
 }
 function fillConfirmFields(){
-    
     const confirmFields = {
         firstName: "confirmFirstName",
         lastName: "confirmLastName",
@@ -277,8 +253,7 @@ function fillConfirmFields(){
     };
     for (const key in confirmFields) {
         const element = document.getElementById(confirmFields[key]);
-        if (!element) return; // 👈 Prevents error on pages without the element
-
+        if (!element) return;
         if (element) {
             const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
             element.textContent = `${formattedKey.replace(/([A-Z])/g, " $1").trim()}: ${sessionStorage.getItem(key) || "N/A"}`;
@@ -288,34 +263,26 @@ function fillConfirmFields(){
 function handleLogIn() {
     const logInUsername = document.getElementById("logInUsername").value.trim();
     const logInPassword = document.getElementById("logInPassword").value.trim();
-
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Retrieve stored users array
-
-    // Find user in stored users list
+    let users = JSON.parse(localStorage.getItem("users")) || [];
     const user = users.find(user => user.username === logInUsername && user.password === logInPassword);
-
     if (user) {
         localStorage.setItem("currentUser", logInUsername);
         alert(`login successful. Welcome back ${logInUsername}`);
-        window.location.href = "home.html"; // Redirect to home page
+        window.location.href = "home.html"; 
     } else {
         console.log("login failed: invalid username");
         alert("Invalid username or password. Please try again.");
     }
 }
 function moveSessionToLocal() {
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Get existing users
+    let users = JSON.parse(localStorage.getItem("users")) || [];
     let newUser = {};
-
     Object.keys(sessionStorage).forEach(key => {
         newUser[key] = sessionStorage.getItem(key);
         console.log(newUser[key]);
     });
-
-    users.push(newUser); // Add new user to users array
-    localStorage.setItem("users", JSON.stringify(users)); // Save to localStorage
-
-    // Ensure currentUser is set before clearing sessionStorage
+    users.push(newUser); 
+    localStorage.setItem("users", JSON.stringify(users)); 
     if (newUser.username) {
         localStorage.setItem("currentUser", newUser.username);
     } else {
@@ -330,7 +297,6 @@ function getInputValues() {
     const startTimeInputTime =  new Date(document.getElementById("startTimeInput").value);
     const difference = now - startTimeInputTime;
     const days = Math.floor((difference % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24));
-
     if(days < 2){
         return{
             firstName: getTrimmedValue("firstNameInput"),
@@ -382,23 +348,18 @@ function navagation(id, html){
 function logAnUrge(){
     const urgeText = document.getElementById("logAnUrgeInput").value.trim();
     const urgeDate = new Date().toISOString();
-
     console.log(typeof(urgeText));
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
     let userIndex = users.findIndex(user => user.username === currentUser);
-
     if (userIndex !== -1) {    
-        // Initialize urges array if it doesn't exist
         if (!Array.isArray(users[userIndex].urges)) {
             users[userIndex].urges = [];
         }
-
         users[userIndex].urges.unshift({
             urgeDate: urgeDate,
             urgeText: urgeText
         });
-
         localStorage.setItem("users", JSON.stringify(users));
         window.location.href = "home.html";
         alert("Urge logged successfully");
@@ -410,31 +371,23 @@ function recentUrge() {
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
     let userIndex = users.findIndex(user => user.username === currentUser);
-
     let recentUrgeElement = document.getElementById("mostRecentUrge");
-    if (!recentUrgeElement) return; // 👈 Prevents error on pages without the element
-
-    // Check if the user has logged any urges
+    if (!recentUrgeElement) return; 
     if (userIndex !== -1 && users[userIndex].urges && users[userIndex].urges.length > 0) {
-        // Get the most recent urge (last one in the array)
         let urgeLength = users[userIndex].urges.length
         let mostRecent = users[userIndex].urges[urgeLength - urgeLength];
-        // Display the most recent urge
         let loggedDate = new Date(mostRecent.urgeDate.trim()).toLocaleString();
         recentUrgeElement.textContent = `${mostRecent.urgeText} (Logged on: ${loggedDate}`;
     } else {
-        // If no urges are logged
         recentUrgeElement.textContent = `No logged urges`;
     }
 }
 function showAllUrges() {
     let allUrges = document.getElementById("allUrges");
-    if (!allUrges) return; // 👈 Prevents error on pages without the element
-
+    if (!allUrges) return; 
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
     let userIndex = users.findIndex(user => user.username === currentUser);
-
     if (userIndex !== -1 && Array.isArray(users[userIndex].urges) && users[userIndex].urges.length > 0) {
         let urgeList = "<ul>";
         users[userIndex].urges.forEach((urge) => {
