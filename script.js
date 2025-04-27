@@ -66,7 +66,12 @@ document.addEventListener("DOMContentLoaded", function(){
             handleLogIn();
         }
     });
-
+    const logInPasswordTextBox = document.getElementById("logInPasswordTextBox");
+    logInPasswordTextBox.addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            handleLogIn();
+        }
+    });
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
