@@ -48,10 +48,10 @@ document.addEventListener("DOMContentLoaded", function(){
             window.location.href ="home.html";
     })
     }
+    
 
     logInEnter("logInPassword");
     logInEnter("logInUsername");
-
     fillConfirmFields();    
     daysSober(); 
     recentUrge();
@@ -91,7 +91,7 @@ function logInEnter(textBoxId){
 }
 function disclaimerText(){
     const disclaimerText = document.getElementById("disclaimerText");
-    if (!disclaimerText) return; // 👈 Prevents error on pages without the element
+    if (!disclaimerText) return;
 
     disclaimerText.textContent = "For immediate support, call the SAMHSA National Helpline at 1-800-662-HELP (4357) or the Suicide & Crisis Lifeline at 988";
 }
@@ -116,7 +116,7 @@ function reasonForSoberText() {
         alert("Error: No purpose found for the user.");
         return;
     }
-    reasonForSoberText.textContent = `"${user.purpose}" -${user.username}`;
+    reasonForSoberText.textContent = `"${user.purpose}" -${user.firstName +' ' +  user.lastName}`;
 }
 function resetSobrietyTimer() {
 
@@ -172,8 +172,6 @@ function daysSober() {
         const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-        
-        //displays appropriet amount of data
         if(minutes == 0){
             sobrietyTimerText.textContent = `You have been sober for ${seconds} seconds. Here's to new beginnings`;
         } else if(hours ==0){
@@ -230,7 +228,7 @@ function fillHomeHeadingText(){
 function getCurrentUserInfo() {
     const currentUsername = localStorage.getItem("currentUser");
 
-    if (!currentUsername) return null; // No user is logged in
+    if (!currentUsername) return null;
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
     return users.find(user => user.username === currentUsername) || null;
@@ -238,7 +236,6 @@ function getCurrentUserInfo() {
 function checkUsernameAvailability(username) {
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    // Check if username already exists
     const userExists = users.some(user => user.username === username);
 
     if (userExists) {
@@ -263,10 +260,10 @@ function validateForm() {
         const field = document.getElementById(fieldId);
         if (!field || field.value.trim() === "") {
             alert(`Please fill in all fields.`);
-            return false; // Stop form submission
+            return false;
         }
     }
-    return true; // All fields are filled
+    return true; 
 }
 function repeatPasswordCorrect(){
     password = document.getElementById("passwordInput").value;
@@ -294,7 +291,7 @@ function fillConfirmFields(){
     };
     for (const key in confirmFields) {
         const element = document.getElementById(confirmFields[key]);
-        if (!element) return; // 👈 Prevents error on pages without the element
+        if (!element) return;
 
         if (element) {
             const formattedKey = key.charAt(0).toUpperCase() + key.slice(1);
@@ -306,22 +303,21 @@ function handleLogIn() {
     const logInUsername = document.getElementById("logInUsername").value.trim();
     const logInPassword = document.getElementById("logInPassword").value.trim();
 
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Retrieve stored users array
+    let users = JSON.parse(localStorage.getItem("users")) || []; 
 
-    // Find user in stored users list
     const user = users.find(user => user.username === logInUsername && user.password === logInPassword);
 
     if (user) {
         localStorage.setItem("currentUser", logInUsername);
         alert(`login successful. Welcome back ${logInUsername}`);
-        window.location.href = "home.html"; // Redirect to home page
+        window.location.href = "home.html"; 
     } else {
         console.log("login failed: invalid username");
         alert("Invalid username or password. Please try again.");
     }
 }
 function moveSessionToLocal() {
-    let users = JSON.parse(localStorage.getItem("users")) || []; // Get existing users
+    let users = JSON.parse(localStorage.getItem("users")) || []; 
     let newUser = {};
 
     Object.keys(sessionStorage).forEach(key => {
@@ -329,10 +325,9 @@ function moveSessionToLocal() {
         console.log(newUser[key]);
     });
 
-    users.push(newUser); // Add new user to users array
-    localStorage.setItem("users", JSON.stringify(users)); // Save to localStorage
+    users.push(newUser); 
+    localStorage.setItem("users", JSON.stringify(users)); 
 
-    // Ensure currentUser is set before clearing sessionStorage
     if (newUser.username) {
         localStorage.setItem("currentUser", newUser.username);
     } else {
@@ -406,7 +401,6 @@ function logAnUrge(){
     let userIndex = users.findIndex(user => user.username === currentUser);
 
     if (userIndex !== -1) {    
-        // Initialize urges array if it doesn't exist
         if (!Array.isArray(users[userIndex].urges)) {
             users[userIndex].urges = [];
         }
@@ -429,24 +423,20 @@ function recentUrge() {
     let userIndex = users.findIndex(user => user.username === currentUser);
 
     let recentUrgeElement = document.getElementById("mostRecentUrge");
-    if (!recentUrgeElement) return; // 👈 Prevents error on pages without the element
+    if (!recentUrgeElement) return; 
 
-    // Check if the user has logged any urges
     if (userIndex !== -1 && users[userIndex].urges && users[userIndex].urges.length > 0) {
-        // Get the most recent urge (last one in the array)
         let urgeLength = users[userIndex].urges.length
         let mostRecent = users[userIndex].urges[urgeLength - urgeLength];
-        // Display the most recent urge
         let loggedDate = new Date(mostRecent.urgeDate.trim()).toLocaleString();
         recentUrgeElement.textContent = `${mostRecent.urgeText} (Logged on: ${loggedDate}`;
     } else {
-        // If no urges are logged
         recentUrgeElement.textContent = `No logged urges`;
     }
 }
 function showAllUrges() {
     let allUrges = document.getElementById("allUrges");
-    if (!allUrges) return; // 👈 Prevents error on pages without the element
+    if (!allUrges) return;
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
     let currentUser = localStorage.getItem("currentUser");
